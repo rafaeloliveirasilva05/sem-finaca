@@ -1,0 +1,37 @@
+.constainer-dashboard {
+  width: 100%;
+  margin-top: 50px;
+  max-width: 1200px;
+}
+
+.constainer-card-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 30px;
+  margin-bottom: 40px;
+}
+
+.container-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+.button-add-item {
+  padding: 8px 16px;
+  background-color: blue;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.container-filter input {
+  height: 30px;
+}

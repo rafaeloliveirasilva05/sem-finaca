@@ -1,3 +1,7 @@
+.container-finance-list ul {
+  list-style: none;
+}
+
 .container-finance-list ul li {
   margin-bottom: 16px;
 }

@@ -1,5 +1,6 @@
 import { CardsValues } from '../../components/CardsValues';
 import { FinanceList } from '../../components/FinanceList';
+import { useTransaContext } from '../../contexts/TransactionsContext';
 
 import './styles.css';
 
@@ -31,6 +32,8 @@ const listFinanceData = [
 ];
 
 export function Dashboard() {
+  const { handlesTransactionModal } = useTransaContext();
+
   return (
     <div
       style={{
@@ -52,7 +55,7 @@ export function Dashboard() {
 
           <div
             className="button-add-item"
-            onClick={() => console.log('add item')}
+            onClick={() => handlesTransactionModal()}
           >
             Adicionar Transação
           </div>

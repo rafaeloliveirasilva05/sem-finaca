@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
-
-import './styles.css';
-
 import Modal from 'react-modal';
+
+import { AiOutlineClose } from 'react-icons/ai';
+import './styles.css';
 
 const customStyles = {
   content: {
@@ -16,17 +14,11 @@ const customStyles = {
   },
 };
 
-export function ModalAddTransaction() {
-  const [modalIsOpen, setIsOpen] = useState(true);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
+export function ModalAddTransaction(props) {
   function afterOpenModal() {}
 
   function closeModal() {
-    setIsOpen(false);
+    props.testeFunction();
   }
 
   function testeModal() {
@@ -65,7 +57,7 @@ export function ModalAddTransaction() {
 
   return (
     <Modal
-      isOpen={modalIsOpen}
+      isOpen={props.modalIsOpen}
       onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       style={customStyles}

@@ -1,0 +1,18 @@
+.container-cards-values {
+  padding: 15px 20px;
+  width: 300px;
+  border-radius: 6px;
+
+  border: 1px solid red;
+  box-shadow: 3px 3px 4px #888888;
+}
+
+.container-cards-values h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.container-cards-values span {
+  font-size: 18px;
+  font-weight: 600;
+}

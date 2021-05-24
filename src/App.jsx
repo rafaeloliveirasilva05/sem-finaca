@@ -2,6 +2,8 @@ import { CardsValues } from './components/CardsValues';
 import { FinanceList } from './components/FinanceList';
 import { Header } from './components/Header/index';
 
+import { ModalAddTransaction } from './components/ ModalAddTransaction';
+
 const listFinanceData = [
   {
     id: '1',
@@ -38,6 +40,8 @@ export default function App() {
         handleDeletarItem={idItem => console.log('handleDeletarItem', idItem)}
         handleEditItem={idItem => console.log('handleEditItem', idItem)}
       />
+
+      <ModalAddTransaction />
     </div>
   );
 }

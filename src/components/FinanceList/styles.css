@@ -1,0 +1,7 @@
+.container-finance-list ul li {
+  margin-bottom: 16px;
+}
+
+.container-finance-list ul li:last-child {
+  margin-bottom: 0;
+}

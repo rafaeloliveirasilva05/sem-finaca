@@ -19,14 +19,14 @@ export function ItemList(props) {
           className="container-buttons"
           onClick={() => props.handleDeletarItem(id)}
         >
-          <FaTrash />
+          <FaTrash size={14} color="#4d4f50" />
         </div>
         <div
           title="Editar"
           className="container-buttons"
           onClick={() => props.handleEditItem(id)}
         >
-          <FaPen />
+          <FaPen size={14} color="#4d4f50" />
         </div>
       </div>
     </div>

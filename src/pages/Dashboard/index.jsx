@@ -28,7 +28,6 @@ const listFinanceData = [
     type: 'Fixo',
     value: '70',
   },
-  
 ];
 
 export function Dashboard() {
@@ -41,9 +40,9 @@ export function Dashboard() {
     >
       <div className="constainer-dashboard">
         <div className="constainer-card-values">
-          <CardsValues />
-          <CardsValues />
-          <CardsValues />
+          <CardsValues title="Entrada" value="2000" type="deposit" />
+          <CardsValues title="Saida" value="100" type="spent" />
+          <CardsValues title="Total" value="1000" type="total" />
         </div>
 
         <div className="container-filter">

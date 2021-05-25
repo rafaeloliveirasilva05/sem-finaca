@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Modal from 'react-modal';
 
 import { AiOutlineClose } from 'react-icons/ai';
@@ -15,10 +16,31 @@ const customStyles = {
 };
 
 export function ModalAddTransaction(props) {
+  const [dataTransaction, setDataTransaction] = useState({});
+
   function afterOpenModal() {}
 
   function closeModal() {
     props.testeFunction();
+  }
+
+  function handleUpdateStates(item, value) {
+    const dataTransactionUpdate = {
+      ...dataTransaction,
+      [item]: value,
+    };
+
+    setDataTransaction(dataTransactionUpdate);
+  }
+
+  function handleAddTransaction() {
+    const dataTransactionUpdate = {
+      ...dataTransaction,
+      id: new Date().getTime(),
+    };
+
+    props.handleAddTransaction(dataTransactionUpdate);
+    closeModal();
   }
 
   function testeModal() {
@@ -34,22 +56,33 @@ export function ModalAddTransaction(props) {
 
         <div className="container-input-data">
           <label htmlFor="">Descrição</label>
-          <input></input>
+          <input
+            type="text"
+            onChange={e => handleUpdateStates('description', e.target.value)}
+          />
         </div>
 
         <div className="container-input-data">
           <label htmlFor="">Tipo do gasto</label>
-          <input></input>
+          <input
+            type="text"
+            onChange={e =>
+              handleUpdateStates('transactionType', e.target.value)
+            }
+          />
         </div>
 
         <div className="container-input-data">
           <label htmlFor="">Valor</label>
-          <input></input>
+          <input
+            type="text"
+            onChange={e => handleUpdateStates('value', e.target.value)}
+          />
         </div>
 
         <div className="container-action-button-transaction">
-          <button>Salvar</button>
-          <button>Cancelar</button>
+          <button onClick={handleAddTransaction}>Salvar</button>
+          <button onClick={closeModal}>Cancelar</button>
         </div>
       </div>
     );

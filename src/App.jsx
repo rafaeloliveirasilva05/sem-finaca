@@ -4,7 +4,12 @@ import { Dashboard } from './pages/Dashboard';
 import { useTransaContext } from './contexts/TransactionsContext';
 
 export default function App() {
-  const { handlesTransactionModal, showAddTransaction } = useTransaContext();
+  const {
+    showAddTransaction,
+    setShowAddTransaction,
+    listFinanceData,
+    setListFinanceData,
+  } = useTransaContext();
 
   return (
     <div>
@@ -12,7 +17,10 @@ export default function App() {
       <Dashboard />
       <ModalAddTransaction
         modalIsOpen={showAddTransaction}
-        testeFunction={handlesTransactionModal}
+        testeFunction={() => setShowAddTransaction(prevState => !prevState)}
+        handleAddTransaction={dataTransaction => {
+          setListFinanceData([...listFinanceData, dataTransaction]);
+        }}
       />
     </div>
   );

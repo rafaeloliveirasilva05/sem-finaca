@@ -4,35 +4,8 @@ import { useTransaContext } from '../../contexts/TransactionsContext';
 
 import './styles.css';
 
-const listFinanceData = [
-  {
-    id: '1',
-    description: 'Pagar aluguel',
-    type: 'Fixo',
-    value: '100',
-  },
-  {
-    id: '2',
-    description: 'Café',
-    type: 'Varidado',
-    value: '3',
-  },
-  {
-    id: '3',
-    description: 'Pagar aluguel',
-    type: 'Fixo',
-    value: '1000',
-  },
-  {
-    id: '4',
-    description: 'Água',
-    type: 'Fixo',
-    value: '70',
-  },
-];
-
 export function Dashboard() {
-  const { handlesTransactionModal } = useTransaContext();
+  const { setShowAddTransaction, listFinanceData } = useTransaContext();
 
   return (
     <div
@@ -55,7 +28,7 @@ export function Dashboard() {
 
           <div
             className="button-add-item"
-            onClick={() => handlesTransactionModal()}
+            onClick={() => setShowAddTransaction(prevState => !prevState)}
           >
             Adicionar Transação
           </div>

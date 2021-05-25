@@ -12,7 +12,7 @@ export function FinanceList(props) {
               <ItemList
                 id={item.id}
                 description={item.description}
-                type={item.type}
+                type={item.transactionType}
                 value={item.value}
                 handleDeletarItem={idItem => props.handleDeletarItem(idItem)}
                 handleEditItem={idItem => props.handleEditItem(idItem)}

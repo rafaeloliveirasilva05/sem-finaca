@@ -1,0 +1,26 @@
+.container-modal-alert {
+  position: relative;
+  width: 500px;
+  height: 100px;
+}
+
+.container-modal-alert h2 {
+  margin-bottom: 10px;
+}
+
+.container-modal-alert-action-button {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.container-modal-alert-action-button button {
+  width: 100px;
+}
+
+.container-modal-alert-action-button button:first-child {
+  margin-right: 15px;
+}

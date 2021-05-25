@@ -35,6 +35,9 @@ export function TransactionsProvider({ children }) {
   const [transactionData, setTransactionData] = useState({});
   const [isUpdate, setIsUpdate] = useState(false);
 
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [transactionDataDelete, setTransactionDataDelete] = useState({});
+
   const value = {
     showAddTransaction,
     setShowAddTransaction,
@@ -47,6 +50,12 @@ export function TransactionsProvider({ children }) {
 
     isUpdate,
     setIsUpdate,
+
+    showAlertModal,
+    setShowAlertModal,
+
+    transactionDataDelete,
+    setTransactionDataDelete,
   };
 
   return (

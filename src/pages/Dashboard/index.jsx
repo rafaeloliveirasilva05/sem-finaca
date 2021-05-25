@@ -11,6 +11,11 @@ export function Dashboard() {
     listFinanceData,
     setTransactionData,
     setIsUpdate,
+
+    setListFinanceData,
+
+    setShowAlertModal,
+    setTransactionDataDelete,
   } = useTransaContext();
 
   return (
@@ -42,7 +47,11 @@ export function Dashboard() {
 
         <FinanceList
           listFinanceData={listFinanceData}
-          handleDeletarItem={idItem => console.log('handleDeletarItem', idItem)}
+          handleDeletarItem={dataItem => {
+            setTransactionDataDelete(dataItem);
+
+            setShowAlertModal(true);
+          }}
           handleEditItem={idItem => {
             const transactionData = listFinanceData.find(item => {
               return item.id === idItem;

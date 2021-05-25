@@ -9,6 +9,9 @@ export default function App() {
     setShowAddTransaction,
     listFinanceData,
     setListFinanceData,
+    transactionData,
+    isUpdate,
+    setIsUpdate,
   } = useTransaContext();
 
   return (
@@ -17,9 +20,21 @@ export default function App() {
       <Dashboard />
       <ModalAddTransaction
         modalIsOpen={showAddTransaction}
-        testeFunction={() => setShowAddTransaction(prevState => !prevState)}
+        testeFunction={() => {
+          setIsUpdate(false);
+          setShowAddTransaction(false);
+        }}
+        transactionData={transactionData || null}
+        isUpdate={isUpdate}
         handleAddTransaction={dataTransaction => {
           setListFinanceData([...listFinanceData, dataTransaction]);
+        }}
+        handleUpdateTransaction={dataTransaction => {
+          const listFinanceDataUpdate = listFinanceData.map(item =>
+            item.id === dataTransaction.id ? dataTransaction : item,
+          );
+
+          setListFinanceData(listFinanceDataUpdate);
         }}
       />
     </div>

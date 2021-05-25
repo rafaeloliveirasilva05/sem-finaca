@@ -32,6 +32,8 @@ const listFinanceDataMock = [
 export function TransactionsProvider({ children }) {
   const [showAddTransaction, setShowAddTransaction] = useState(false);
   const [listFinanceData, setListFinanceData] = useState(listFinanceDataMock);
+  const [transactionData, setTransactionData] = useState({});
+  const [isUpdate, setIsUpdate] = useState(false);
 
   const value = {
     showAddTransaction,
@@ -39,6 +41,12 @@ export function TransactionsProvider({ children }) {
 
     listFinanceData,
     setListFinanceData,
+
+    transactionData,
+    setTransactionData,
+
+    isUpdate,
+    setIsUpdate,
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import { AiOutlineClose } from 'react-icons/ai';
@@ -18,10 +18,26 @@ const customStyles = {
 export function ModalAddTransaction(props) {
   const [dataTransaction, setDataTransaction] = useState({});
 
+  useEffect(() => {
+    if (props.transactionData) {
+      const { id, description, transactionType, value } = props.transactionData;
+
+      const teste = {
+        id: id,
+        description: description,
+        transactionType: transactionType,
+        value: value,
+      };
+
+      setDataTransaction(teste);
+    }
+  }, [props.transactionData]);
+
   function afterOpenModal() {}
 
   function closeModal() {
     props.testeFunction();
+    setDataTransaction({});
   }
 
   function handleUpdateStates(item, value) {
@@ -43,6 +59,11 @@ export function ModalAddTransaction(props) {
     closeModal();
   }
 
+  function handleUpdateTransaction() {
+    props.handleUpdateTransaction(dataTransaction);
+    closeModal();
+  }
+
   function testeModal() {
     return (
       <div className="container-modal-add-transaction">
@@ -58,6 +79,7 @@ export function ModalAddTransaction(props) {
           <label htmlFor="">Descrição</label>
           <input
             type="text"
+            value={dataTransaction.description || ''}
             onChange={e => handleUpdateStates('description', e.target.value)}
           />
         </div>
@@ -66,6 +88,7 @@ export function ModalAddTransaction(props) {
           <label htmlFor="">Tipo do gasto</label>
           <input
             type="text"
+            value={dataTransaction.transactionType || ''}
             onChange={e =>
               handleUpdateStates('transactionType', e.target.value)
             }
@@ -76,12 +99,19 @@ export function ModalAddTransaction(props) {
           <label htmlFor="">Valor</label>
           <input
             type="text"
+            value={dataTransaction.value || ''}
             onChange={e => handleUpdateStates('value', e.target.value)}
           />
         </div>
 
         <div className="container-action-button-transaction">
-          <button onClick={handleAddTransaction}>Salvar</button>
+          <button
+            onClick={
+              props.isUpdate ? handleUpdateTransaction : handleAddTransaction
+            }
+          >
+            {props.isUpdate ? 'Editar' : 'Salvar'}
+          </button>
           <button onClick={closeModal}>Cancelar</button>
         </div>
       </div>

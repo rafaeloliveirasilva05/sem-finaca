@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CardsValues } from '../../components/CardsValues';
 import { FinanceList } from '../../components/FinanceList';
 import { useTransaContext } from '../../contexts/TransactionsContext';
@@ -5,7 +6,12 @@ import { useTransaContext } from '../../contexts/TransactionsContext';
 import './styles.css';
 
 export function Dashboard() {
-  const { setShowAddTransaction, listFinanceData } = useTransaContext();
+  const {
+    setShowAddTransaction,
+    listFinanceData,
+    setTransactionData,
+    setIsUpdate,
+  } = useTransaContext();
 
   return (
     <div
@@ -37,7 +43,15 @@ export function Dashboard() {
         <FinanceList
           listFinanceData={listFinanceData}
           handleDeletarItem={idItem => console.log('handleDeletarItem', idItem)}
-          handleEditItem={idItem => console.log('handleEditItem', idItem)}
+          handleEditItem={idItem => {
+            const transactionData = listFinanceData.find(item => {
+              return item.id === idItem;
+            });
+
+            setIsUpdate(prevState => !prevState);
+            setTransactionData(transactionData);
+            setShowAddTransaction(prevState => !prevState);
+          }}
         />
       </div>
     </div>
